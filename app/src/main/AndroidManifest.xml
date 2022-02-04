@@ -13,7 +13,7 @@
         tools:replace="android:icon">
         <activity
             android:name="com.food_on.app.DeliveryFoodPanel.Delivery_ShippingOrder"
-            android:label="Ship Orders"></activity>
+            android:label="Ship Orders" />
         <activity
             android:name="com.food_on.app.DeliveryFoodPanel.DeliveryShipOrderView"
             android:label="Ship Orders" />
