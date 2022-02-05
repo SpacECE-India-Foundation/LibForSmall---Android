@@ -15,4 +15,4 @@
 </RelativeLayout>
 
 
-<!--took off line 12 android:layout_below="@+id/searchbar"-->
+<!--took off the line 12 android:layout_below="@+id/searchbar"-->
