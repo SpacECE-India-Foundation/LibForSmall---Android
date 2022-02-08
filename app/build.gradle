@@ -11,6 +11,9 @@ android {
         }
     }
     buildTypes {
+        lintOptions {
+            abortOnError false
+        }
         debug{
             signingConfig signingConfigs.debug
         }
