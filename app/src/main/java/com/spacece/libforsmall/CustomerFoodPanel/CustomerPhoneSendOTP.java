@@ -60,7 +60,7 @@ public class CustomerPhoneSendOTP extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Customer customer = dataSnapshot.getValue(Customer.class);
-                OldNumber=customer.getMobileno();
+                OldNumber=customer.getMobile();
                 verify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

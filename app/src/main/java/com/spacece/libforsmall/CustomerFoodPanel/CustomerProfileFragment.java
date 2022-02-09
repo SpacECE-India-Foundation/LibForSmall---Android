@@ -88,7 +88,7 @@ public class CustomerProfileFragment extends Fragment {
                 firstname.setText(customer.getFirstName());
                 lastname.setText(customer.getLastName());
                 address.setText(customer.getLocalAddress());
-                mobileno.setText(customer.getMobileno());
+                mobileno.setText(customer.getMobile());
                 Email.setText(customer.getEmailID());
                 State.setSelection(getIndexByString(State, customer.getState()));
                 State.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -228,7 +228,7 @@ public class CustomerProfileFragment extends Fragment {
                         confirmpass = customer.getConfirmPassword();
                         email = customer.getEmailID();
                         passwordd = customer.getPassword();
-                        long mobilenoo = Long.parseLong(customer.getMobileno());
+                        long mobilenoo = Long.parseLong(customer.getMobile());
 
                         String Fname = firstname.getText().toString().trim();
                         String Lname = lastname.getText().toString().trim();

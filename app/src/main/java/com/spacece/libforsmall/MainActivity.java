@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.spacece.libforsmall.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +24,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.spacece.libforsmall.SendNotification.Token;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -109,6 +116,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, 3000);
+    }
+
+    public static void UpdateToken() {
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<String> task) {
+                String refreshToken = task.getResult();
+                Token token = new Token(refreshToken);
+                FirebaseDatabase.getInstance().getReference("Tokens").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(token);
+            }
+        });
+
     }
 }
 

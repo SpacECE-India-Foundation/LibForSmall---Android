@@ -3,20 +3,21 @@ package com.spacece.libforsmall;
 public class Customer {
 
 
-    private String City,ConfirmPassword,EmailID,FirstName,LastName,Mobileno,Password,State,Suburban,LocalAddress;
+    private String City,ConfirmPassword,EmailID,FirstName,LastName, Mobile,Password,State,Suburban,LocalAddress;
 
     public Customer() {
 
 
     }
 
-    public Customer(String City, String confirmPassword, String emailID, String firstName,String lastName, String mobileno, String password, String state, String suburban,String localAddress) {
+    public Customer(String City, String confirmPassword, String emailID, String firstName,String lastName,
+                    String mobile, String password, String state, String suburban,String localAddress) {
         this.City = City;
-       ConfirmPassword=confirmPassword;
+        ConfirmPassword=confirmPassword;
         EmailID = emailID;
         FirstName=firstName;
         LastName=lastName;
-        Mobileno = mobileno;
+        Mobile = mobile;
         Password = password;
         State = state;
         Suburban = suburban;
@@ -63,12 +64,12 @@ public class Customer {
         LastName = lastName;
     }
 
-    public String getMobileno() {
-        return Mobileno;
+    public String getMobile() {
+        return Mobile;
     }
 
-    public void setMobileno(String mobileno) {
-        Mobileno = mobileno;
+    public void setMobile(String mobile) {
+        Mobile = mobile;
     }
 
     public String getPassword() {

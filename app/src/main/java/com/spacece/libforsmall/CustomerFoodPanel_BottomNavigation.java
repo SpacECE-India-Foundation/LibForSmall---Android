@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.spacece.libforsmall.CustomerFoodPanel.CustomerCartFragment;
 import com.spacece.libforsmall.CustomerFoodPanel.CustomerHomeFragment;
 import com.spacece.libforsmall.CustomerFoodPanel.CustomerOrderFragment;
@@ -22,6 +25,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+import static com.spacece.libforsmall.MainActivity.UpdateToken;
 
 public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -50,15 +58,6 @@ public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implem
         } else {
             loadFragment(new CustomerHomeFragment());
         }
-    }
-
-    private void UpdateToken() {
-
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken = "FirebaseInstanceId.getInstance().getToken()";
-        Token token = new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
-
     }
 
     private boolean loadFragment(Fragment fragment) {

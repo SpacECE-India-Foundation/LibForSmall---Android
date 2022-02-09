@@ -211,7 +211,7 @@ public class CustomerCartFragment extends Fragment {
                                                                         HashMap<String, String> hashMap1 = new HashMap<>();
                                                                         hashMap1.put("Address", address);
                                                                         hashMap1.put("GrandTotalPrice", String.valueOf(grandtotal));
-                                                                        hashMap1.put("MobileNumber", customer.getMobileno());
+                                                                        hashMap1.put("MobileNumber", customer.getMobile());
                                                                         hashMap1.put("Name", customer.getFirstName() + " " + customer.getLastName());
                                                                         hashMap1.put("Note", Addnote);
                                                                         FirebaseDatabase.getInstance().getReference("CustomerPendingOrders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId).child("OtherInformation").setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
