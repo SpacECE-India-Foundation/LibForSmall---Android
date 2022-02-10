@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pic3"
-    tools:context="my.food_on.app.ChefRegisteration">
+    android:background="@drawable/chef_background"
+    tools:context=".ChefRegisteration">
 
 
     <ScrollView

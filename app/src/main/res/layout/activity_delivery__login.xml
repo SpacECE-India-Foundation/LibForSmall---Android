@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/pic5"
+    android:background="@drawable/delivery_background"
     android:layout_height="match_parent"
-    tools:context="my.food_on.app.Delivery_Login">
+    tools:context=".Delivery_Login">
 
 
     <LinearLayout

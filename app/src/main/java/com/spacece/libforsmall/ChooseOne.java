@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.spacece.libforsmall.R;
 public class ChooseOne extends AppCompatActivity {
 
     Button Chef, Customer, DeliveryPerson;
@@ -25,18 +24,10 @@ public class ChooseOne extends AppCompatActivity {
         DeliveryPerson = (Button) findViewById(R.id.delivery);
         Customer = (Button) findViewById(R.id.customer);
         AnimationDrawable animationDrawable = new AnimationDrawable();
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.bghome2), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic2), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic3), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic5), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic6), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.bggg), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic9), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic10), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic11), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic12), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic13), 3000);
-        animationDrawable.addFrame(getResources().getDrawable(R.drawable.pic14), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.home_background), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.customer_background), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.chef_background), 3000);
+        animationDrawable.addFrame(getResources().getDrawable(R.drawable.delivery_background), 3000);
 
 
 

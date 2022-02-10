@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pic9"
-    tools:context="my.food_on.app.Delivery_SendOtp">
+    android:background="@drawable/delivery_background"
+    tools:context=".Delivery_SendOtp">
 
     <LinearLayout
         android:id="@+id/linearlayout"

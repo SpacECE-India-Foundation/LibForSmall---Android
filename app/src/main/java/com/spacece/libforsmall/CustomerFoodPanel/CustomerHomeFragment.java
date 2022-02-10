@@ -48,7 +48,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customerhome, null);
-        getActivity().setTitle("Food On");
+        getActivity().setTitle("Lib For Small");
         setHasOptionsMenu(true);
         recyclerView = v.findViewById(R.id.recycle_menu);
         recyclerView.setHasFixedSize(true);
@@ -66,7 +66,9 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
             public void run() {
                 swipeRefreshLayout.setRefreshing(true);
                 String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                System.out.println(userid);
                 dataaa = FirebaseDatabase.getInstance().getReference("Customer").child(userid);
+                System.out.println(dataaa); //testing crash here
                 dataaa.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

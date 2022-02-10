@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
-    tools:context="my.food_on.app.Registeration">
+    android:background="@drawable/customer_background"
+    tools:context=".Registeration">
 
     <ScrollView
         android:layout_width="match_parent"

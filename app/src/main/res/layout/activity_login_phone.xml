@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/pic11"
+    android:background="@drawable/customer_background"
     android:layout_height="match_parent"
-    tools:context="my.food_on.app.LoginPhone">
+    tools:context=".LoginPhone">
 
     <LinearLayout
         android:id="@+id/linearlayout"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="my.food_on.app.MainMenu">
+    tools:context=".MainMenu">
 
 
     <ImageView
@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/pic18"
+        android:src="@drawable/main_menu_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,14 +43,14 @@
             android:layout_width="157dp"
             android:layout_height="65dp"
             android:layout_gravity="center"
-            android:src="@drawable/titleimg4" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:fontFamily="cursive"
-            android:text="Eat Homemade Anywhere !"
+            android:text="All the books in One Library"
             android:textAlignment="center"
             android:textColor="@color/Blacklogo"
             android:textSize="18dp" />
