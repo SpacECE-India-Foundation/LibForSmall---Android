@@ -83,7 +83,7 @@
                 android:layout_marginLeft="15dp"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/caudex"
-                android:text="Chef Name"
+                android:text="Owner Name"
                 android:textStyle="bold"
                 android:textColor="#FA3E03"
                 android:textSize="20dp" />

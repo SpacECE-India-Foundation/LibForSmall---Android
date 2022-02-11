@@ -51,7 +51,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:text="Add a Note (Extra Onion,sauce...)"
+            android:text="Want to add your suggetions"
             android:textAllCaps="false"
             android:textColor="#FA3E03"
             android:textSize="17sp" />
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:hint="Add cooking instruction"
+            android:hint="Put your suggetions"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:inputType="textMultiLine"

@@ -29,7 +29,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/Blacklogo"
                 android:maxWidth="300dp"
-                android:text="Pannerr tikka malasa "
+                android:text="Picture Book "
                 android:textSize="25dp" />
 
             <LinearLayout
