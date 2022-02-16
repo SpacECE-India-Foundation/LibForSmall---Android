@@ -504,7 +504,7 @@
                     android:layout_marginTop="17dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginBottom="17dp"
-                    android:background="@drawable/btnred"
+                    android:background="@drawable/btnyellow"
                     android:text="Update"
                     android:textColor="@color/white" />
 

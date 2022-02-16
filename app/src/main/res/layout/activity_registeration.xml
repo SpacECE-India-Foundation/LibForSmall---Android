@@ -16,16 +16,17 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/background_shape"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:background="@drawable/background_shape"
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.461">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,8 +37,8 @@
                 android:id="@+id/Fname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 android:layout_marginTop="10dp"
+                app:errorEnabled="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
@@ -58,8 +59,8 @@
                 android:id="@+id/Lname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 android:layout_marginTop="10dp"
+                app:errorEnabled="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
@@ -166,13 +167,12 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/Localaddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 android:layout_marginTop="10dp"
+                app:errorEnabled="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
@@ -237,7 +237,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/button_shape"
+                android:background="@drawable/btnyellow"
                 android:text="REGISTER"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -309,7 +309,7 @@
                     android:layout_width="95dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
-                    android:background="@drawable/btnred"
+                    android:background="@drawable/btnyellow"
                     android:drawableLeft="@drawable/whitemail"
                     android:padding="10dp"
                     android:text="Email"
@@ -321,7 +321,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/btnblueish"
+                    android:background="@drawable/btnyellow"
                     android:drawableLeft="@drawable/phonewhite"
                     android:drawablePadding="5dp"
                     android:padding="10dp"

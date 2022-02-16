@@ -90,7 +90,7 @@
             android:name="com.spacece.libforsmall.ChefFoodPanel.Update_Delete_Dish"
             android:label="Home" />
         <activity
-            android:name="com.spacece.libforsmall.ChefFoodPanel.Chef_PostDish"
+            android:name="com.spacece.libforsmall.ChefFoodPanel.Chef_PostBook"
             android:label="Post Dish" />
         <activity
             android:name="com.spacece.libforsmall.ChefFoodPanel_BottomNavigation"

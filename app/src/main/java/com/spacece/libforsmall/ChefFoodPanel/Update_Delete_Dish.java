@@ -116,7 +116,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
 
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Update_Delete_Dish.this);
-                        builder.setMessage("Are you sure you want to Delete Dish");
+                        builder.setMessage("Are you sure you want to Delete Book");
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -124,7 +124,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
                                 firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(ID).removeValue();
 
                                 AlertDialog.Builder food = new AlertDialog.Builder(Update_Delete_Dish.this);
-                                food.setMessage("Your Dish has been Deleted");
+                                food.setMessage("Your Book has been Deleted");
                                 food.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -160,7 +160,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
 
                         desc.getEditText().setText(updateDishModel.getDescription());
                         qty.getEditText().setText(updateDishModel.getQuantity());
-                        Dishname.setText("Dish name: " + updateDishModel.getDishes());
+                        Dishname.setText("Book name: " + updateDishModel.getDishes());
                         dishes = updateDishModel.getDishes();
                         pri.getEditText().setText(updateDishModel.getPrice());
                         Glide.with(Update_Delete_Dish.this).load(updateDishModel.getImageURL()).into(imageButton);
@@ -277,7 +277,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
-                Toast.makeText(Update_Delete_Dish.this, "Dish Updated Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Update_Delete_Dish.this, "Book Updated Successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }

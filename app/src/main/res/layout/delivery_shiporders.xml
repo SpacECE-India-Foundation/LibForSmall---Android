@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_shape"
+                android:background="@drawable/btnyellow"
                 android:text="View"
                 android:textColor="@color/white" />
 
@@ -72,7 +72,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="25dp"
                 android:layout_weight="1"
-                android:background="@drawable/btnblueish"
+                android:background="@drawable/btnyellow"
                 android:text="Shipping"
                 android:textColor="@color/white" />
 

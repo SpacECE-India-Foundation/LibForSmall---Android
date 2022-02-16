@@ -41,10 +41,10 @@
                     android:id="@+id/elegantbtn"
                     android:layout_width="75dp"
                   android:layout_marginRight="10dp"
-                    app:backgroundDrawable="@drawable/elegant_btnshape"
+                    app:backgroundDrawable="@color/Black"
                     android:layout_height="25dp"
                     android:layout_gravity="bottom"
-                    app:backGroundColor="#FA3E03" />
+                    app:backGroundColor="#eda018" />
             </LinearLayout>
         </LinearLayout>
 

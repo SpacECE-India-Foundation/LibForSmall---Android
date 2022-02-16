@@ -43,8 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@drawable/btnred"
             android:text="View"
+            android:background="@drawable/btnyellow"
             android:textColor="@color/white" />
 
 

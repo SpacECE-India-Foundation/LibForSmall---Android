@@ -161,9 +161,9 @@ public class OrderDish extends AppCompatActivity {
                                                 int totalprice = num * dishprice;
                                                 if (num != 0) {
                                                     HashMap<String, String> hashMap = new HashMap<>();
-                                                    hashMap.put("DishName", dishname);
-                                                    hashMap.put("DishID", RandomId);
-                                                    hashMap.put("DishQuantity", String.valueOf(num));
+                                                    hashMap.put("BookName", dishname);
+                                                    hashMap.put("BookID", RandomId);
+                                                    hashMap.put("BookQuantity", String.valueOf(num));
                                                     hashMap.put("Price", String.valueOf(dishprice));
                                                     hashMap.put("Totalprice", String.valueOf(totalprice));
                                                     hashMap.put("ChefId", ChefID);
@@ -192,7 +192,7 @@ public class OrderDish extends AppCompatActivity {
                                     else
                                     {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(OrderDish.this);
-                                        builder.setMessage("You can't add food items of multiple chef at a time. Try to add items of same chef");
+                                        builder.setMessage("You can't add book items of multiple chef at a time. Try to add items of same owner");
                                         builder.setCancelable(false);
                                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
@@ -220,12 +220,12 @@ public class OrderDish extends AppCompatActivity {
                                         int totalprice = num * dishprice;
                                         if (num != 0) {
                                             HashMap<String, String> hashMap = new HashMap<>();
-                                            hashMap.put("DishName", dishname);
-                                            hashMap.put("DishID", RandomId);
-                                            hashMap.put("DishQuantity", String.valueOf(num));
+                                            hashMap.put("BookName", dishname);
+                                            hashMap.put("BookID", RandomId);
+                                            hashMap.put("BookQuantity", String.valueOf(num));
                                             hashMap.put("Price", String.valueOf(dishprice));
                                             hashMap.put("Totalprice", String.valueOf(totalprice));
-                                            hashMap.put("ChefId", ChefID);
+                                            hashMap.put("OwnwerId", ChefID);
                                             custID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                             reference = FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(custID).child(RandomId);
                                             reference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {

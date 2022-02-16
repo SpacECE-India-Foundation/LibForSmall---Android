@@ -60,10 +60,10 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/btnred"
             android:drawableLeft="@drawable/whitemail"
             android:paddingLeft="10dp"
-            android:text="SignIn with Email"
+            android:text="SignIn With Email"
+            android:background="@drawable/btnyellow"
             android:textColor="@color/white" />
 
         <Button
@@ -72,10 +72,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/btnblueish"
             android:drawableLeft="@drawable/phonewhite"
             android:paddingLeft="10dp"
             android:text="SignIn with Phone"
+            android:background="@drawable/btnyellow"
             android:textColor="@color/white" />
 
         <LinearLayout
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/btnyellow"
             android:text="SignUp"
             android:textColor="@color/white" />
 

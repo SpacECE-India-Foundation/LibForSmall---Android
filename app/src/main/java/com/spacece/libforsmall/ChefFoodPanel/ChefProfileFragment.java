@@ -23,7 +23,7 @@ public class ChefProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_chef_profile, container, false);
-        getActivity().setTitle("Post Dish");
+        getActivity().setTitle("Post Book");
         AnimationDrawable animationDrawable = new AnimationDrawable();
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.home_background), 3000);
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.customer_background), 3000);
@@ -43,7 +43,7 @@ public class ChefProfileFragment extends Fragment {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), Chef_PostDish.class));
+                startActivity(new Intent(getContext(), Chef_PostBook.class));
             }
         });
 

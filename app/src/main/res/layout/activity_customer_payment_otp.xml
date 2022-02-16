@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Place"
-        android:background="@drawable/btnred"
+        android:background="@drawable/btnyellow"
         android:textColor="@color/white"
         android:layout_marginLeft="90dp"
         android:layout_marginRight="90dp"
