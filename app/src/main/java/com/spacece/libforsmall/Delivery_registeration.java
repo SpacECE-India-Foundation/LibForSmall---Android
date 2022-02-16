@@ -31,224 +31,35 @@ import java.util.HashMap;
 
 public class Delivery_registeration extends AppCompatActivity {
 
-    private String selectedDistrict2, selectedState2;                 //vars to hold the values of selected State and District
-    private TextView tvStateSpinner2, tvDistrictSpinner2;             //declaring TextView to show the errors
-    private Spinner stateSpinner2, districtSpinner2;                  //Spinners
-    private ArrayAdapter<CharSequence> districtAdapter2;   //declare adapters for the spinners
+    String[] Maharashtra = {"Mumbai", "Pune", "Aurangabad"};
+    String[] Gujarat = {"Ahemdabad", "Rajkot", "Surat"};
+
+
+    String[] Mumbai = {"Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Mahalakshmi", "Lower Parel", "Prabhadevi",
+            "Dadar", "Matunga", "Mahim", "Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri", "Jogeshwari", "Ram Mandir",
+            "Goregaon", "Malad", "Kandivai", "Borivali", "Dahisar", "MiraRoad", "Bhayander", "Naigaon", "Vasai Road", "Nalla Sopara", "Virar"};
+
+
+    String[] Pune = {"Hinjewadi", "Wagholi", " Ambegaon", "Undri", "Katraj"};
+    String[] Aurangabad = {"Aarif Colony", "Baiji Pura", "Balaji Nagar", "Angoori Bagh"};
+
 
     TextInputLayout Fname, Lname, Pass, cfpass, mobileno, houseno, area, postcode, Email;
+    Spinner statespin, Cityspin, Suburban;
     Button signup, Emaill, Phone;
     CountryCodePicker Cpp;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth FAuth;
     String role = "DeliveryPerson";
-    String fname;
-    String lname;
-    String mobile;
-    String confirmpassword;
-    String password;
-    String Area;
-    String Postcode;
-    String house;
-    String emailid;
+    String statee, cityy, suburban, fname, lname, mobile, confirmpassword, password, Area, Postcode, house, emailid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_registeration);
 
-
-
-        //State Spinner Initialisation
-        stateSpinner2 = findViewById(R.id.spinner_indian_states2);    //Finds a view that was identified by the android:id attribute in xml
-
-        //Populate ArrayAdapter using string array and a spinner layout that we will define
-        ArrayAdapter<CharSequence> stateAdapter;
-        stateAdapter = ArrayAdapter.createFromResource(this,
-                R.array.array_indian_states, R.layout.spinner_layout2);
-
-        // Specify the layout to use when the list of choices appear
-        stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        stateSpinner2.setAdapter(stateAdapter);            //Set the adapter to the spinner to populate the State Spinner
-
-        //When any item of the stateSpinner uis selected
-        stateSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Define City Spinner but we will populate the options through the selected state
-                districtSpinner2 = findViewById(R.id.spinner_indian_districts2);
-
-                selectedState2 = stateSpinner2.getSelectedItem().toString();      //Obtain the selected State
-
-                int parentID = parent.getId();
-                if (parentID == R.id.spinner_indian_states2){
-                    switch (selectedState2){
-                        case "Select Your State": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_default_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Andhra Pradesh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_andhra_pradesh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Arunachal Pradesh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_arunachal_pradesh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Assam": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_assam_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Bihar": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_bihar_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Chhattisgarh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_chhattisgarh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Goa": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_goa_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Gujarat": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_gujarat_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Haryana": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_haryana_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Himachal Pradesh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_himachal_pradesh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Jharkhand": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_jharkhand_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Karnataka": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_karnataka_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Kerala": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_kerala_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Madhya Pradesh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_madhya_pradesh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Maharashtra": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_maharashtra_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Manipur": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_manipur_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Meghalaya": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_meghalaya_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Mizoram": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_mizoram_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Nagaland": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_nagaland_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Odisha": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_odisha_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Punjab": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_punjab_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Rajasthan": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_rajasthan_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Sikkim": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_sikkim_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Tamil Nadu": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_tamil_nadu_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Telangana": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_telangana_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Tripura": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_tripura_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Uttar Pradesh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_uttar_pradesh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Uttarakhand": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_uttarakhand_districts, R.layout.spinner_layout2);
-                            break;
-                        case "West Bengal": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_west_bengal_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Andaman and Nicobar Islands": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_andaman_nicobar_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Chandigarh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_chandigarh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Dadra and Nagar Haveli": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_dadra_nagar_haveli_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Daman and Diu": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_daman_diu_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Delhi": districtAdapter2= ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_delhi_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Jammu and Kashmir": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_jammu_kashmir_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Lakshadweep": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_lakshadweep_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Ladakh": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_ladakh_districts, R.layout.spinner_layout2);
-                            break;
-                        case "Puducherry": districtAdapter2 = ArrayAdapter.createFromResource(parent.getContext(),
-                                R.array.array_puducherry_districts, R.layout.spinner_layout2);
-                            break;
-                        default:  break;
-                    }
-                    districtAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);     // Specify the layout to use when the list of choices appears
-                    districtSpinner2.setAdapter(districtAdapter2);        //Populate the list of Districts in respect of the State selected
-
-                    //To obtain the selected District from the spinner
-                    districtSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            selectedDistrict2 = districtSpinner2.getSelectedItem().toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        Button submitButton2;                                //To display the selected State and District
-        submitButton2 = findViewById(R.id.button_submit2);
-        tvStateSpinner2 = findViewById(R.id.textView_indian_states2);
-        tvDistrictSpinner2 = findViewById(R.id.textView_indian_districts2);
-
-        submitButton2.setOnClickListener(v -> {
-            if (selectedState2.equals("Select Your State")) {
-                Toast.makeText(Delivery_registeration.this, "Please select your state from the list", Toast.LENGTH_LONG).show();
-                tvStateSpinner2.setError("State is required!");      //To set error on TextView
-                tvStateSpinner2.requestFocus();
-            } else if (selectedDistrict2.equals("Select Your District")) {
-                Toast.makeText(Delivery_registeration.this, "Please select your district from the list", Toast.LENGTH_LONG).show();
-                tvDistrictSpinner2.setError("District is required!");
-                tvDistrictSpinner2.requestFocus();
-                tvStateSpinner2.setError(null);                      //To reove error from stateSpinner
-            } else {
-                tvStateSpinner2.setError(null);
-                tvDistrictSpinner2.setError(null);
-                Toast.makeText(Delivery_registeration.this, "Selected State: "+selectedState2+"\nSelected District: "+selectedDistrict2, Toast.LENGTH_LONG).show();
-            }
-        });
-
-        databaseReference = firebaseDatabase.getInstance().getReference("DeliveryPerson");
-        FAuth = FirebaseAuth.getInstance();
-        signup=(Button)findViewById(R.id.button_submit2) ;
         Fname = (TextInputLayout) findViewById(R.id.fname);
         Lname = (TextInputLayout) findViewById(R.id.lname);
         Pass = (TextInputLayout) findViewById(R.id.password);
@@ -258,17 +69,108 @@ public class Delivery_registeration extends AppCompatActivity {
         houseno = (TextInputLayout) findViewById(R.id.Houseno);
         area = (TextInputLayout) findViewById(R.id.Areaa);
         postcode = (TextInputLayout) findViewById(R.id.Postcodee);
+        statespin = (Spinner) findViewById(R.id.State);
+        Cityspin = (Spinner) findViewById(R.id.City);
         Emaill = (Button) findViewById(R.id.emaillid);
-        signup = (Button) findViewById(R.id.button_submit2);
+        Suburban = (Spinner) findViewById(R.id.suburban);
+        signup = (Button) findViewById(R.id.Signupp);
         Phone = (Button) findViewById(R.id.Phonenumber);
         Cpp = (CountryCodePicker) findViewById(R.id.ctrycode);
         final ProgressDialog mDialog = new ProgressDialog(Delivery_registeration.this);
         mDialog.setCancelable(false);
         mDialog.setCanceledOnTouchOutside(false);
+
+
+        statespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object value = parent.getItemAtPosition(position);
+                statee = value.toString().trim();
+                if (statee.equals("Maharashtra")) {
+                    ArrayList<String> list = new ArrayList<>();
+                    for (String text : Maharashtra) {
+                        list.add(text);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, list);
+
+                    Cityspin.setAdapter(arrayAdapter);
+                }
+                if (statee.equals("Gujarat")) {
+                    ArrayList<String> list = new ArrayList<>();
+                    for (String text : Gujarat) {
+                        list.add(text);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, list);
+
+                    Cityspin.setAdapter(arrayAdapter);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Cityspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object value = parent.getItemAtPosition(position);
+                cityy = value.toString().trim();
+                if (cityy.equals("Mumbai")) {
+                    ArrayList<String> listt = new ArrayList<>();
+                    for (String text : Mumbai) {
+                        listt.add(text);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, listt);
+                    Suburban.setAdapter(arrayAdapter);
+                }
+
+                if (cityy.equals("Pune")) {
+                    ArrayList<String> listt = new ArrayList<>();
+                    for (String text : Pune) {
+                        listt.add(text);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, listt);
+                    Suburban.setAdapter(arrayAdapter);
+                }
+
+                if (cityy.equals("Aurangabad")) {
+                    ArrayList<String> listt = new ArrayList<>();
+                    for (String text : Aurangabad) {
+                        listt.add(text);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, listt);
+                    Suburban.setAdapter(arrayAdapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Suburban.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object value = parent.getItemAtPosition(position);
+                suburban = value.toString().trim();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        databaseReference = firebaseDatabase.getInstance().getReference("DeliveryPerson");
+        FAuth = FirebaseAuth.getInstance();
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fname = (TextInputLayout) findViewById(R.id.fname);
+
                 fname = Fname.getEditText().getText().toString().trim();
                 lname = Lname.getEditText().getText().toString().trim();
                 mobile = mobileno.getEditText().getText().toString().trim();
@@ -299,6 +201,7 @@ public class Delivery_registeration extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         HashMap<String, String> hashMappp = new HashMap<>();
                                         hashMappp.put("Area", Area);
+                                        hashMappp.put("City", cityy);
                                         hashMappp.put("ConfirmPassword", confirmpassword);
                                         hashMappp.put("EmailID", emailid);
                                         hashMappp.put("Fname", fname);
@@ -307,6 +210,8 @@ public class Delivery_registeration extends AppCompatActivity {
                                         hashMappp.put("Mobile", mobile);
                                         hashMappp.put("Password", password);
                                         hashMappp.put("Postcode", Postcode);
+                                        hashMappp.put("State", statee);
+                                        hashMappp.put("Suburban", suburban);
                                         firebaseDatabase.getInstance().getReference("DeliveryPerson").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(hashMappp).addOnCompleteListener(new OnCompleteListener<Void>() {
 
                                             @Override
@@ -362,7 +267,6 @@ public class Delivery_registeration extends AppCompatActivity {
             }
         });
 
-        Phone=(Button)findViewById(R.id.phone2);
         Phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -372,7 +276,7 @@ public class Delivery_registeration extends AppCompatActivity {
                 finish();
             }
         });
-        Emaill=(Button)findViewById(R.id.emaill2);
+
         Emaill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
