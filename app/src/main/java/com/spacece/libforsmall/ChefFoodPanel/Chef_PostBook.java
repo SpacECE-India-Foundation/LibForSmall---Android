@@ -1,5 +1,9 @@
 package com.spacece.libforsmall.ChefFoodPanel;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.os.ParcelFileDescriptor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +44,9 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.util.UUID;
 
 public class Chef_PostBook extends AppCompatActivity {
@@ -62,6 +69,8 @@ public class Chef_PostBook extends AppCompatActivity {
     String ChefId;
     String RandomUId;
     String State, City, Sub;
+    private static final int IMAGE_PICK_CODE = 1000;
+    private static final int PERMISSION_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +169,7 @@ public class Chef_PostBook extends AppCompatActivity {
         return isvalid;
     }
 
+
     private void uploadImage() {
 
         if (imageuri != null) {
@@ -209,19 +219,47 @@ public class Chef_PostBook extends AppCompatActivity {
 
     }
 
+    private void pickImageFromGallery() {
+        //intent to pick image
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, IMAGE_PICK_CODE);
+    }
+
 
     private void onSelectImageClick(View v) {
 
-        CropImage.startPickImageActivity(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_DENIED){
+                //permission not granted, request it.
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                //show popup for runtime permission
+                requestPermissions(permissions, PERMISSION_CODE);
+            }
+            else {
+                //permission already granted
+                pickImageFromGallery();
+            }
+        }
+        else {
+            //system os is less than marshmallow
+            pickImageFromGallery();
+        }
+
+
     }
+
+
 
     @Override
     @SuppressLint("NewApi")
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            imageuri = CropImage.getPickImageResultUri(this, data);
+        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            imageuri = data.getData();
 
             if (CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)) {
                 mCropimageuri = imageuri;
@@ -244,17 +282,22 @@ public class Chef_PostBook extends AppCompatActivity {
         }
 
 
-        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (mCropimageuri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startCropImageActivity(mCropimageuri);
-        } else {
-            Toast.makeText(this, "cancelling,required permission not granted", Toast.LENGTH_SHORT).show();
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED) {
+                //permission was granted
+                pickImageFromGallery();
+            } else {
+                //permission was denied
+                Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -264,8 +307,6 @@ public class Chef_PostBook extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setMultiTouchEnabled(true)
                 .start(this);
-
-
     }
 }
 
