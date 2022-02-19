@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.spacece.libforsmall.Chef;
 import com.spacece.libforsmall.ChefFoodPanel.UpdateDishModel;
@@ -28,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -84,7 +84,7 @@ public class OrderDish extends AppCompatActivity {
                         FoodDescription.setText(Html.fromHtml(ss));
                         String pri = "<b>" + "Price: ₹ " + "</b>" + updateDishModel.getPrice();
                         FoodPrice.setText(Html.fromHtml(pri));
-                        Glide.with(OrderDish.this).load(updateDishModel.getImageURL()).into(imageView);
+                        Picasso.get().load(updateDishModel.getImageURL()).into(imageView);
 
                         chefdata = FirebaseDatabase.getInstance().getReference("Chef").child(ChefID);
                         chefdata.addListenerForSingleValueEvent(new ValueEventListener() {

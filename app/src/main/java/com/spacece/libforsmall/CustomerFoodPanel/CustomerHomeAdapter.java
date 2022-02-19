@@ -11,12 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 
 import com.spacece.libforsmall.ChefFoodPanel.UpdateDishModel;
 import com.spacece.libforsmall.R;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,7 +44,8 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
         final UpdateDishModel updateDishModel=updateDishModellist.get(position);
-        Glide.with(mcontext).load(updateDishModel.getImageURL()).into(holder.imageView);
+        Picasso.get().load(updateDishModel.getImageURL()).into(holder.imageView);
+
         holder.Dishname.setText(updateDishModel.getDishes());
         updateDishModel.getRandomUID();
         updateDishModel.getChefId();

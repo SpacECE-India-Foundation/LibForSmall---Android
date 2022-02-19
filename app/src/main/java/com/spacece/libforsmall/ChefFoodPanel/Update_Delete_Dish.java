@@ -20,7 +20,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.spacece.libforsmall.Chef;
 import com.spacece.libforsmall.ChefFoodPanel_BottomNavigation;
 import com.spacece.libforsmall.R;
@@ -40,6 +39,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -163,8 +163,10 @@ public class Update_Delete_Dish extends AppCompatActivity {
                         Dishname.setText("Book name: " + updateDishModel.getDishes());
                         dishes = updateDishModel.getDishes();
                         pri.getEditText().setText(updateDishModel.getPrice());
-                        Glide.with(Update_Delete_Dish.this).load(updateDishModel.getImageURL()).into(imageButton);
+                        System.out.println(updateDishModel.getImageURL());
                         dburi = updateDishModel.getImageURL();
+                        Picasso.get().load(dburi).into(imageButton);
+
 
                     }
 

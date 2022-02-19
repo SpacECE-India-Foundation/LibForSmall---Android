@@ -202,6 +202,7 @@ public class Chef_PostBook extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     progressDialog.dismiss();
                                     Toast.makeText(Chef_PostBook.this, "Book posted successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
                             });
                         }
