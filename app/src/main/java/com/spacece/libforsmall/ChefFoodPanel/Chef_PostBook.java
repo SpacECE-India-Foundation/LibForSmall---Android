@@ -1,9 +1,14 @@
 package com.spacece.libforsmall.ChefFoodPanel;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +28,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
 import com.spacece.libforsmall.Chef;
 import com.spacece.libforsmall.R;
 
@@ -45,9 +51,12 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.UUID;
+
+import static android.provider.MediaStore.AUTHORITY;
 
 public class Chef_PostBook extends AppCompatActivity {
 
@@ -58,7 +67,6 @@ public class Chef_PostBook extends AppCompatActivity {
     TextInputLayout desc, qty, pri;
     String description, quantity, price, dishes;
     Uri imageuri;
-    private Uri mCropimageuri;
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
@@ -70,6 +78,7 @@ public class Chef_PostBook extends AppCompatActivity {
     String RandomUId;
     String State, City, Sub;
     private static final int IMAGE_PICK_CODE = 1000;
+    private static final int IMAGE_CAPTURE_CODE = 2000;
     private static final int PERMISSION_CODE = 1001;
 
     @Override
@@ -101,7 +110,7 @@ public class Chef_PostBook extends AppCompatActivity {
                     imageButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            onSelectImageClick(v);
+                            onSelectImageClick();
                         }
                     });
 
@@ -221,19 +230,43 @@ public class Chef_PostBook extends AppCompatActivity {
 
     private void pickImageFromGallery() {
         //intent to pick image
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
+
+        final CharSequence[] optionsMenu = {"Take Photo", "Choose from Gallery", "Exit" };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setItems(optionsMenu, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(optionsMenu[i].equals("Take Photo")){
+                    // Open the camera and get the photo
+                    Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(takePicture, IMAGE_CAPTURE_CODE);
+
+                }
+                else if(optionsMenu[i].equals("Choose from Gallery")){
+                    // choose from  external storage
+                    Intent pickPhoto = new Intent(Intent.ACTION_PICK);
+                    pickPhoto.setType("image/*");
+                    startActivityForResult(pickPhoto , IMAGE_PICK_CODE);
+                }
+                else if (optionsMenu[i].equals("Exit")) {
+                    dialogInterface.dismiss();
+                }
+            }
+        });
+        builder.show();
+
     }
 
 
-    private void onSelectImageClick(View v) {
+    private void onSelectImageClick() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_DENIED){
+                    == PackageManager.PERMISSION_DENIED & checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED ){
                 //permission not granted, request it.
-                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
                 //show popup for runtime permission
                 requestPermissions(permissions, PERMISSION_CODE);
             }
@@ -250,6 +283,13 @@ public class Chef_PostBook extends AppCompatActivity {
 
     }
 
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
 
 
     @Override
@@ -262,13 +302,29 @@ public class Chef_PostBook extends AppCompatActivity {
             imageuri = data.getData();
 
             if (CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)) {
-                mCropimageuri = imageuri;
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
 
             } else {
 
                 startCropImageActivity(imageuri);
             }
+        }
+
+        if (resultCode == RESULT_OK && requestCode == IMAGE_CAPTURE_CODE) {
+
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageuri = getImageUri(this, imageBitmap);
+
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageuri)) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+
+            } else {
+
+                startCropImageActivity(imageuri);
+            }
+
+
         }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
