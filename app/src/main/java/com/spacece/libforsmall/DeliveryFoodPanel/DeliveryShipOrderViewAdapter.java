@@ -34,9 +34,9 @@ public class DeliveryShipOrderViewAdapter extends RecyclerView.Adapter<DeliveryS
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final DeliveryShipFinalOrders deliveryShipFinalOrders = deliveryShipFinalOrderslist.get(position);
-        holder.dishname.setText(deliveryShipFinalOrders.getDishName());
-        holder.price.setText("Price: ₹ " + deliveryShipFinalOrders.getDishPrice());
-        holder.quantity.setText("× " + deliveryShipFinalOrders.getDishQuantity());
+        holder.dishname.setText(deliveryShipFinalOrders.getBookName());
+        holder.price.setText("Price: ₹ " + deliveryShipFinalOrders.getBookPrice());
+        holder.quantity.setText("× " + deliveryShipFinalOrders.getBookQuantity());
         holder.totalprice.setText("Total: ₹ " + deliveryShipFinalOrders.getTotalPrice());
     }
 

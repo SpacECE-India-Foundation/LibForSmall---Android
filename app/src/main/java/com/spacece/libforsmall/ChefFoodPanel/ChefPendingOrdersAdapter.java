@@ -85,13 +85,13 @@ public class ChefPendingOrdersAdapter extends RecyclerView.Adapter<ChefPendingOr
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             final ChefPendingOrders chefPendingOrders = snapshot.getValue(ChefPendingOrders.class);
                             HashMap<String, String> hashMap = new HashMap<>();
-                            String chefid = chefPendingOrders.getChefId();
-                            String dishid = chefPendingOrders.getDishId();
-                            hashMap.put("ChefId", chefPendingOrders.getChefId());
-                            hashMap.put("DishId", chefPendingOrders.getDishId());
-                            hashMap.put("DishName", chefPendingOrders.getDishName());
-                            hashMap.put("DishPrice", chefPendingOrders.getPrice());
-                            hashMap.put("DishQuantity", chefPendingOrders.getDishQuantity());
+                            String chefid = chefPendingOrders.getOwnerId();
+                            String dishid = chefPendingOrders.getBookId();
+                            hashMap.put("OwnerId", chefPendingOrders.getOwnerId());
+                            hashMap.put("BookId", chefPendingOrders.getBookId());
+                            hashMap.put("BookName", chefPendingOrders.getBookName());
+                            hashMap.put("BookPrice", chefPendingOrders.getPrice());
+                            hashMap.put("BookQuantity", chefPendingOrders.getBookQuantity());
                             hashMap.put("RandomUID", random);
                             hashMap.put("TotalPrice", chefPendingOrders.getTotalPrice());
                             hashMap.put("UserId", chefPendingOrders.getUserId());
@@ -122,12 +122,12 @@ public class ChefPendingOrdersAdapter extends RecyclerView.Adapter<ChefPendingOr
                                                     final ChefPendingOrders chefPendingOrders = snapshot.getValue(ChefPendingOrders.class);
                                                     HashMap<String, String> hashMap2 = new HashMap<>();
                                                     userid = chefPendingOrders.getUserId();
-                                                    dishid = chefPendingOrders.getDishId();
-                                                    hashMap2.put("ChefId", chefPendingOrders.getChefId());
-                                                    hashMap2.put("DishId", chefPendingOrders.getDishId());
-                                                    hashMap2.put("DishName", chefPendingOrders.getDishName());
-                                                    hashMap2.put("DishPrice", chefPendingOrders.getPrice());
-                                                    hashMap2.put("DishQuantity", chefPendingOrders.getDishQuantity());
+                                                    dishid = chefPendingOrders.getBookId();
+                                                    hashMap2.put("OwnerId", chefPendingOrders.getOwnerId());
+                                                    hashMap2.put("BookId", chefPendingOrders.getBookId());
+                                                    hashMap2.put("BookName", chefPendingOrders.getBookName());
+                                                    hashMap2.put("BookPrice", chefPendingOrders.getPrice());
+                                                    hashMap2.put("BookQuantity", chefPendingOrders.getBookQuantity());
                                                     hashMap2.put("RandomUID", random);
                                                     hashMap2.put("TotalPrice", chefPendingOrders.getTotalPrice());
                                                     hashMap2.put("UserId", chefPendingOrders.getUserId());
@@ -239,7 +239,7 @@ public class ChefPendingOrdersAdapter extends RecyclerView.Adapter<ChefPendingOr
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             final ChefPendingOrders chefPendingOrders = snapshot.getValue(ChefPendingOrders.class);
                             userid = chefPendingOrders.getUserId();
-                            dishid = chefPendingOrders.getDishId();
+                            dishid = chefPendingOrders.getBookId();
                         }
                         FirebaseDatabase.getInstance().getReference().child("Tokens").child(userid).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override

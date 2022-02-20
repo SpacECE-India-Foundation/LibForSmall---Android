@@ -40,7 +40,7 @@
                 <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                     android:id="@+id/elegantbtn"
                     android:layout_width="75dp"
-                  android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     app:backgroundDrawable="@color/Black"
                     android:layout_height="25dp"
                     android:layout_gravity="bottom"

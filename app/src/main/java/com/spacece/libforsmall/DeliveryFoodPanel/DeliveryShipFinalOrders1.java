@@ -2,12 +2,12 @@ package com.spacece.libforsmall.DeliveryFoodPanel;
 
 public class DeliveryShipFinalOrders1 {
 
-    private String Address,ChefId,ChefName,GrandTotalPrice,MobileNumber,Name,RandomUID,UserId;
+    private String Address, OwnerId, OwnerName,GrandTotalPrice,MobileNumber,Name,RandomUID,UserId;
 
     public DeliveryShipFinalOrders1(String address, String chefId, String chefName, String grandTotalPrice, String mobileNumber, String name, String randomUID, String userId) {
         Address = address;
-        ChefId = chefId;
-        ChefName = chefName;
+        OwnerId = chefId;
+        OwnerName = chefName;
         GrandTotalPrice = grandTotalPrice;
         MobileNumber = mobileNumber;
         Name = name;
@@ -28,20 +28,20 @@ public class DeliveryShipFinalOrders1 {
         Address = address;
     }
 
-    public String getChefId() {
-        return ChefId;
+    public String getOwnerId() {
+        return OwnerId;
     }
 
-    public void setChefId(String chefId) {
-        ChefId = chefId;
+    public void setOwnerId(String ownerId) {
+        OwnerId = ownerId;
     }
 
-    public String getChefName() {
-        return ChefName;
+    public String getOwnerName() {
+        return OwnerName;
     }
 
-    public void setChefName(String chefName) {
-        ChefName = chefName;
+    public void setOwnerName(String ownerName) {
+        OwnerName = ownerName;
     }
 
     public String getGrandTotalPrice() {

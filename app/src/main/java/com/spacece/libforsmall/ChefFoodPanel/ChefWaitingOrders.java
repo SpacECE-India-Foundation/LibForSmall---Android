@@ -2,14 +2,14 @@ package com.spacece.libforsmall.ChefFoodPanel;
 
 public class ChefWaitingOrders {
 
-    private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId;
+    private String OwnerId, BookId, BookName, BookPrice, BookQuantity,RandomUID,TotalPrice,UserId;
 
     public ChefWaitingOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
-        ChefId = chefId;
-        DishId = dishId;
-        DishName = dishName;
-        DishPrice = dishPrice;
-        DishQuantity = dishQuantity;
+        OwnerId = chefId;
+        BookId = dishId;
+        BookName = dishName;
+        BookPrice = dishPrice;
+        BookQuantity = dishQuantity;
         RandomUID = randomUID;
         TotalPrice = totalPrice;
         UserId = userId;
@@ -20,44 +20,44 @@ public class ChefWaitingOrders {
 
     }
 
-    public String getChefId() {
-        return ChefId;
+    public String getOwnerId() {
+        return OwnerId;
     }
 
-    public void setChefId(String chefId) {
-        ChefId = chefId;
+    public void setOwnerId(String ownerId) {
+        OwnerId = ownerId;
     }
 
-    public String getDishId() {
-        return DishId;
+    public String getBookId() {
+        return BookId;
     }
 
-    public void setDishId(String dishId) {
-        DishId = dishId;
+    public void setBookId(String bookId) {
+        BookId = bookId;
     }
 
-    public String getDishName() {
-        return DishName;
+    public String getBookName() {
+        return BookName;
     }
 
-    public void setDishName(String dishName) {
-        DishName = dishName;
+    public void setBookName(String bookName) {
+        BookName = bookName;
     }
 
-    public String getDishPrice() {
-        return DishPrice;
+    public String getBookPrice() {
+        return BookPrice;
     }
 
-    public void setDishPrice(String dishPrice) {
-        DishPrice = dishPrice;
+    public void setBookPrice(String bookPrice) {
+        BookPrice = bookPrice;
     }
 
-    public String getDishQuantity() {
-        return DishQuantity;
+    public String getBookQuantity() {
+        return BookQuantity;
     }
 
-    public void setDishQuantity(String dishQuantity) {
-        DishQuantity = dishQuantity;
+    public void setBookQuantity(String bookQuantity) {
+        BookQuantity = bookQuantity;
     }
 
     public String getRandomUID() {

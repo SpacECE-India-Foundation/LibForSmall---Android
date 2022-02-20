@@ -38,13 +38,15 @@ public class CustomerCartAdapter extends RecyclerView.Adapter<CustomerCartAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+
         final Cart cart = cartModellist.get(position);
-        holder.dishname.setText(cart.getDishName());
+
+        holder.dishname.setText(cart.getBookName());
         holder.PriceRs.setText("Price: ₹ " + cart.getPrice());
-        holder.Qty.setText("× " + cart.getDishQuantity());
+        holder.Qty.setText("× " + cart.getBookQuantity());
         holder.Totalrs.setText("Total: ₹ " + cart.getTotalprice());
         total += Integer.parseInt(cart.getTotalprice());
-        holder.elegantNumberButton.setNumber(cart.getDishQuantity());
+        holder.elegantNumberButton.setNumber(cart.getBookQuantity());
         final int dishprice = Integer.parseInt(cart.getPrice());
 
         holder.elegantNumberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
@@ -54,16 +56,16 @@ public class CustomerCartAdapter extends RecyclerView.Adapter<CustomerCartAdapte
                 int totalprice = num * dishprice;
                 if (num != 0) {
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("DishID", cart.getDishID());
-                    hashMap.put("DishName", cart.getDishName());
-                    hashMap.put("DishQuantity", String.valueOf(num));
+                    hashMap.put("BookID", cart.getBookID());
+                    hashMap.put("BookName", cart.getBookName());
+                    hashMap.put("BookQuantity", String.valueOf(num));
                     hashMap.put("Price", String.valueOf(dishprice));
                     hashMap.put("Totalprice", String.valueOf(totalprice));
-                    hashMap.put("ChefId",cart.getChefId());
+                    hashMap.put("OwnerId",cart.getOwnerId());
 
-                    FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(cart.getDishID()).setValue(hashMap);
+                    FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(cart.getBookID()).setValue(hashMap);
                 } else {
-                    FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(cart.getDishID()).removeValue();
+                    FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(cart.getBookID()).removeValue();
                 }
             }
         });

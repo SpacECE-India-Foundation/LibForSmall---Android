@@ -58,7 +58,7 @@ public class ChefPreparedOrderView extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private APIService apiService;
     Spinner Shipper;
-    String deliveryId = "oCpc4SwLVFbKO0fPdtp4R6bmDmI3";
+    String deliveryId = "Ac1rJZC8VtUBBMmnl8oouuDRUjA3";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,13 +121,13 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                                             for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                                 final ChefFinalOrders chefFinalOrders = dataSnapshot1.getValue(ChefFinalOrders.class);
                                                 HashMap<String, String> hashMap = new HashMap<>();
-                                                String dishid = chefFinalOrders.getDishId();
+                                                String dishid = chefFinalOrders.getBookId();
                                                 userid = chefFinalOrders.getUserId();
-                                                hashMap.put("ChefId", chefFinalOrders.getChefId());
-                                                hashMap.put("DishId", chefFinalOrders.getDishId());
-                                                hashMap.put("DishName", chefFinalOrders.getDishName());
-                                                hashMap.put("DishPrice", chefFinalOrders.getDishPrice());
-                                                hashMap.put("DishQuantity", chefFinalOrders.getDishQuantity());
+                                                hashMap.put("OwnerId", chefFinalOrders.getOwnerId());
+                                                hashMap.put("BookId", chefFinalOrders.getBookId());
+                                                hashMap.put("BookName", chefFinalOrders.getBookName());
+                                                hashMap.put("BookPrice", chefFinalOrders.getBookPrice());
+                                                hashMap.put("BookQuantity", chefFinalOrders.getBookQuantity());
                                                 hashMap.put("RandomUID", RandomUID);
                                                 hashMap.put("TotalPrice", chefFinalOrders.getTotalPrice());
                                                 hashMap.put("UserId", chefFinalOrders.getUserId());
@@ -141,8 +141,8 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                                                     HashMap<String, String> hashMap1 = new HashMap<>();
                                                     String chefid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                                     hashMap1.put("Address", chefFinalOrders1.getAddress());
-                                                    hashMap1.put("ChefId", chefid);
-                                                    hashMap1.put("ChefName", ChefName);
+                                                    hashMap1.put("OwnerId", chefid);
+                                                    hashMap1.put("OwnerName", ChefName);
                                                     hashMap1.put("GrandTotalPrice", chefFinalOrders1.getGrandTotalPrice());
                                                     hashMap1.put("MobileNumber", chefFinalOrders1.getMobileNumber());
                                                     hashMap1.put("Name", chefFinalOrders1.getName());

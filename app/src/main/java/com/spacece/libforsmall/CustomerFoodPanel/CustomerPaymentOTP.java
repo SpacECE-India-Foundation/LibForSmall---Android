@@ -67,12 +67,12 @@ public class CustomerPaymentOTP extends AppCompatActivity {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             final CustomerPaymentOrders customerPaymentOrders = dataSnapshot1.getValue(CustomerPaymentOrders.class);
                             HashMap<String, String> hashMap = new HashMap<>();
-                            String dishid = customerPaymentOrders.getDishId();
-                            hashMap.put("ChefId", customerPaymentOrders.getChefId());
-                            hashMap.put("DishId", customerPaymentOrders.getDishId());
-                            hashMap.put("DishName", customerPaymentOrders.getDishName());
-                            hashMap.put("DishPrice", customerPaymentOrders.getDishPrice());
-                            hashMap.put("DishQuantity", customerPaymentOrders.getDishQuantity());
+                            String dishid = customerPaymentOrders.getBookId();
+                            hashMap.put("OwnerId", customerPaymentOrders.getOwnerId());
+                            hashMap.put("BookId", customerPaymentOrders.getBookId());
+                            hashMap.put("BookName", customerPaymentOrders.getBookName());
+                            hashMap.put("BookPrice", customerPaymentOrders.getBookPrice());
+                            hashMap.put("BookQuantity", customerPaymentOrders.getBookQuantity());
                             hashMap.put("RandomUID", RandomUID);
                             hashMap.put("TotalPrice", customerPaymentOrders.getTotalPrice());
                             hashMap.put("UserId", customerPaymentOrders.getUserId());
@@ -103,13 +103,13 @@ public class CustomerPaymentOTP extends AppCompatActivity {
                                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                                     final CustomerPaymentOrders customerPaymentOrderss = snapshot.getValue(CustomerPaymentOrders.class);
                                                     HashMap<String, String> hashMap2 = new HashMap<>();
-                                                    String dishid = customerPaymentOrderss.getDishId();
-                                                    ChefID = customerPaymentOrderss.getChefId();
-                                                    hashMap2.put("ChefId", customerPaymentOrderss.getChefId());
-                                                    hashMap2.put("DishId", customerPaymentOrderss.getDishId());
-                                                    hashMap2.put("DishName", customerPaymentOrderss.getDishName());
-                                                    hashMap2.put("DishPrice", customerPaymentOrderss.getDishPrice());
-                                                    hashMap2.put("DishQuantity", customerPaymentOrderss.getDishQuantity());
+                                                    String dishid = customerPaymentOrderss.getBookId();
+                                                    ChefID = customerPaymentOrderss.getOwnerId();
+                                                    hashMap2.put("OwnerId", customerPaymentOrderss.getOwnerId());
+                                                    hashMap2.put("BookId", customerPaymentOrderss.getBookId());
+                                                    hashMap2.put("BookName", customerPaymentOrderss.getBookName());
+                                                    hashMap2.put("BookPrice", customerPaymentOrderss.getBookPrice());
+                                                    hashMap2.put("BookQuantity", customerPaymentOrderss.getBookQuantity());
                                                     hashMap2.put("RandomUID", RandomUID);
                                                     hashMap2.put("TotalPrice", customerPaymentOrderss.getTotalPrice());
                                                     hashMap2.put("UserId", customerPaymentOrderss.getUserId());

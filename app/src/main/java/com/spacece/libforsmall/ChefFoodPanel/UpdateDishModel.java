@@ -1,8 +1,11 @@
 package com.spacece.libforsmall.ChefFoodPanel;
 
+import androidx.annotation.NonNull;
+import org.jetbrains.annotations.NotNull;
+
 public class UpdateDishModel {
 
-    String Dishes,RandomUID,Description,Quantity,Price,ImageURL,ChefId;
+    String Dishes,RandomUID,Description,Quantity,Price,ImageURL, OwnerId;
 
 
     public UpdateDishModel()
@@ -62,11 +65,18 @@ public class UpdateDishModel {
         Dishes = dishes;
     }
 
-    public String getChefId() {
-        return ChefId;
+    public String getOwnerId() {
+        return OwnerId;
     }
 
-    public void setChefId(String chefId) {
-        ChefId = chefId;
+    public void setOwnerId(String ownerId) {
+        OwnerId = ownerId;
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public String toString() {
+        return getOwnerId() + " " + getDishes() + " " + getDescription() + " " + getPrice() + " " + getImageURL() + " " + getQuantity() + " " + getRandomUID() + "/";
     }
 }

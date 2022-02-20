@@ -97,6 +97,8 @@ public class CustomerCartFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Cart cart = snapshot.getValue(Cart.class);
 
+                    System.out.println(cart);
+
                     cartModelList.add(cart);
                 }
                 if (cartModelList.size() == 0) {
@@ -190,14 +192,14 @@ public class CustomerCartFragment extends Fragment {
                                                                 RandomUId = UUID.randomUUID().toString();
                                                                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                                                     final Cart cart1 = dataSnapshot1.getValue(Cart.class);
-                                                                    DishId = cart1.getDishID();
+                                                                    DishId = cart1.getBookID();
                                                                     address = localaddress.getText().toString().trim();
                                                                     Addnote = addnote.getText().toString().trim();
                                                                     final HashMap<String, String> hashMap = new HashMap<>();
-                                                                    hashMap.put("ChefId", cart1.getChefId());
-                                                                    hashMap.put("DishID", cart1.getDishID());
-                                                                    hashMap.put("DishName", cart1.getDishName());
-                                                                    hashMap.put("DishQuantity", cart1.getDishQuantity());
+                                                                    hashMap.put("OwnerId", cart1.getOwnerId());
+                                                                    hashMap.put("BookID", cart1.getBookID());
+                                                                    hashMap.put("BookName", cart1.getBookName());
+                                                                    hashMap.put("BookQuantity", cart1.getBookQuantity());
                                                                     hashMap.put("Price", cart1.getPrice());
                                                                     hashMap.put("TotalPrice", cart1.getTotalprice());
                                                                     FirebaseDatabase.getInstance().getReference("CustomerPendingOrders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId).child("Dishes").child(DishId).setValue(hashMap);
@@ -232,14 +234,14 @@ public class CustomerCartFragment extends Fragment {
 
                                                                                                         for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
                                                                                                             final CustomerPendingOrders customerPendingOrders = dataSnapshot2.getValue(CustomerPendingOrders.class);
-                                                                                                            String d = customerPendingOrders.getDishID();
+                                                                                                            String d = customerPendingOrders.getBookID();
                                                                                                             String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                                                                                            ChefId = customerPendingOrders.getChefId();
+                                                                                                            ChefId = customerPendingOrders.getOwnerId();
                                                                                                             final HashMap<String, String> hashMap2 = new HashMap<>();
-                                                                                                            hashMap2.put("ChefId", ChefId);
-                                                                                                            hashMap2.put("DishId", customerPendingOrders.getDishID());
-                                                                                                            hashMap2.put("DishName", customerPendingOrders.getDishName());
-                                                                                                            hashMap2.put("DishQuantity", customerPendingOrders.getDishQuantity());
+                                                                                                            hashMap2.put("OwnerId", ChefId);
+                                                                                                            hashMap2.put("BookId", customerPendingOrders.getBookID());
+                                                                                                            hashMap2.put("BookName", customerPendingOrders.getBookName());
+                                                                                                            hashMap2.put("BookQuantity", customerPendingOrders.getBookQuantity());
                                                                                                             hashMap2.put("Price", customerPendingOrders.getPrice());
                                                                                                             hashMap2.put("RandomUID", RandomUId);
                                                                                                             hashMap2.put("TotalPrice", customerPendingOrders.getTotalPrice());

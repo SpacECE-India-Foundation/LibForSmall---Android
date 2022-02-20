@@ -4,17 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.os.Environment;
-import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +24,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.core.content.FileProvider;
 import com.spacece.libforsmall.Chef;
 import com.spacece.libforsmall.R;
 
@@ -51,12 +46,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.IOException;
 import java.util.UUID;
-
-import static android.provider.MediaStore.AUTHORITY;
 
 public class Chef_PostBook extends AppCompatActivity {
 
@@ -74,7 +64,7 @@ public class Chef_PostBook extends AppCompatActivity {
     DatabaseReference dataaa;
     FirebaseAuth FAuth;
     StorageReference ref;
-    String ChefId;
+    String OwnerId;
     String RandomUId;
     String State, City, Sub;
     private static final int IMAGE_PICK_CODE = 1000;
@@ -187,7 +177,7 @@ public class Chef_PostBook extends AppCompatActivity {
             progressDialog.show();
             RandomUId = UUID.randomUUID().toString();
             ref = storageReference.child(RandomUId);
-            ChefId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            OwnerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             ref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
                 @Override
@@ -195,7 +185,7 @@ public class Chef_PostBook extends AppCompatActivity {
                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, String.valueOf(uri), RandomUId, ChefId);
+                            FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, String.valueOf(uri), RandomUId, OwnerId);
                             firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId)
                                     .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

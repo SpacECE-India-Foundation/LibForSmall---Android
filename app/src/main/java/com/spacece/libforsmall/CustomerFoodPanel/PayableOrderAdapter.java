@@ -33,9 +33,9 @@ public class PayableOrderAdapter extends RecyclerView.Adapter<PayableOrderAdapte
     public void onBindViewHolder(@NonNull PayableOrderAdapter.ViewHolder holder, int position) {
 
         final CustomerPaymentOrders customerPaymentOrders = customerPaymentOrderslist.get(position);
-        holder.Dishname.setText(customerPaymentOrders.getDishName());
-        holder.Price.setText("Price: ₹ " + customerPaymentOrders.getDishPrice());
-        holder.Quantity.setText("× " + customerPaymentOrders.getDishQuantity());
+        holder.Dishname.setText(customerPaymentOrders.getBookName());
+        holder.Price.setText("Price: ₹ " + customerPaymentOrders.getBookPrice());
+        holder.Quantity.setText("× " + customerPaymentOrders.getBookQuantity());
         holder.Totalprice.setText("Total: ₹ " + customerPaymentOrders.getTotalPrice());
     }
 

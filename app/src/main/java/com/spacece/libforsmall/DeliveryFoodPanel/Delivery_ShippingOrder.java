@@ -77,9 +77,9 @@ public class Delivery_ShippingOrder extends AppCompatActivity {
                 Address.setText(deliveryShipFinalOrders1.getAddress());
                 Custname.setText(deliveryShipFinalOrders1.getName());
                 MobileNumber.setText("+91" + deliveryShipFinalOrders1.getMobileNumber());
-                ChefName.setText("Chef " + deliveryShipFinalOrders1.getChefName());
+                ChefName.setText("Chef " + deliveryShipFinalOrders1.getOwnerName());
                 userid = deliveryShipFinalOrders1.getUserId();
-                Chefid = deliveryShipFinalOrders1.getChefId();
+                Chefid = deliveryShipFinalOrders1.getOwnerId();
                 Shipped.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

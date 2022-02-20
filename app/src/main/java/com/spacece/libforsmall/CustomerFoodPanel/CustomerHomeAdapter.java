@@ -29,8 +29,8 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
 
     public CustomerHomeAdapter(Context context,List<UpdateDishModel>updateDishModellist)
     {
-        this.updateDishModellist=updateDishModellist;
-        this.mcontext=context;
+        this.updateDishModellist = updateDishModellist;
+        this.mcontext = context;
     }
 
     @NonNull
@@ -43,12 +43,12 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-        final UpdateDishModel updateDishModel=updateDishModellist.get(position);
+        final UpdateDishModel updateDishModel = updateDishModellist.get(position);
         Picasso.get().load(updateDishModel.getImageURL()).into(holder.imageView);
 
         holder.Dishname.setText(updateDishModel.getDishes());
         updateDishModel.getRandomUID();
-        updateDishModel.getChefId();
+        updateDishModel.getOwnerId();
         holder.price.setText("Price: ₹ " + updateDishModel.getPrice());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
 
                 Intent intent=new Intent(mcontext,OrderDish.class);
                 intent.putExtra("FoodMenu",updateDishModel.getRandomUID());
-                intent.putExtra("ChefId",updateDishModel.getChefId());
+                intent.putExtra("ChefId",updateDishModel.getOwnerId());
 
 
                 mcontext.startActivity(intent);

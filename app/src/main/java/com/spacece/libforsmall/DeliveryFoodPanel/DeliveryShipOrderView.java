@@ -86,7 +86,7 @@ public class DeliveryShipOrderView extends AppCompatActivity {
                 address.setText(deliveryShipFinalOrders1.getAddress());
                 name.setText(deliveryShipFinalOrders1.getName());
                 number.setText("+91" + deliveryShipFinalOrders1.getMobileNumber());
-                ChefName.setText("Chef " + deliveryShipFinalOrders1.getChefName());
+                ChefName.setText("Chef " + deliveryShipFinalOrders1.getOwnerName());
 
             }
 

@@ -1,14 +1,17 @@
 package com.spacece.libforsmall.CustomerFoodPanel;
 
+import androidx.annotation.NonNull;
+import org.jetbrains.annotations.NotNull;
+
 public class Cart {
 
-    private String ChefId,DishID,DishName,DishQuantity,Price,Totalprice;
+    private String OwnerId, BookID, BookName, BookQuantity,Price,Totalprice;
 
     public Cart(String chefId, String dishID, String dishName, String dishQuantity, String price, String totalprice) {
-        ChefId = chefId;
-        DishID = dishID;
-        DishName = dishName;
-        DishQuantity = dishQuantity;
+        OwnerId = chefId;
+        BookID = dishID;
+        BookName = dishName;
+        BookQuantity = dishQuantity;
         Price = price;
         Totalprice = totalprice;
     }
@@ -16,36 +19,36 @@ public class Cart {
     public Cart() {
     }
 
-    public String getChefId() {
-        return ChefId;
+    public String getOwnerId() {
+        return OwnerId;
     }
 
-    public void setChefId(String chefId) {
-        ChefId = chefId;
+    public void setOwnerId(String ownerId) {
+        OwnerId = ownerId;
     }
 
-    public String getDishID() {
-        return DishID;
+    public String getBookID() {
+        return BookID;
     }
 
-    public void setDishID(String dishID) {
-        DishID = dishID;
+    public void setBookID(String bookID) {
+        BookID = bookID;
     }
 
-    public String getDishName() {
-        return DishName;
+    public String getBookName() {
+        return BookName;
     }
 
-    public void setDishName(String dishName) {
-        DishName = dishName;
+    public void setBookName(String bookName) {
+        BookName = bookName;
     }
 
-    public String getDishQuantity() {
-        return DishQuantity;
+    public String getBookQuantity() {
+        return BookQuantity;
     }
 
-    public void setDishQuantity(String dishQuantity) {
-        DishQuantity = dishQuantity;
+    public void setBookQuantity(String bookQuantity) {
+        BookQuantity = bookQuantity;
     }
 
     public String getPrice() {
@@ -62,5 +65,12 @@ public class Cart {
 
     public void setTotalprice(String totalprice) {
         Totalprice = totalprice;
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public String toString() {
+        return getOwnerId() + " " + getBookID() + " " + getBookName() + " " + getBookQuantity() + " " + getTotalprice() + " " + getPrice() + "/";
     }
 }

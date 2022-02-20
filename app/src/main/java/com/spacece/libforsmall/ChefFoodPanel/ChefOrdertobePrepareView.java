@@ -108,13 +108,13 @@ public class ChefOrdertobePrepareView extends AppCompatActivity {
                                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                         final ChefWaitingOrders chefWaitingOrders = dataSnapshot1.getValue(ChefWaitingOrders.class);
                                         HashMap<String, String> hashMap = new HashMap<>();
-                                        String dishid = chefWaitingOrders.getDishId();
+                                        String dishid = chefWaitingOrders.getBookId();
                                         userid = chefWaitingOrders.getUserId();
-                                        hashMap.put("ChefId", chefWaitingOrders.getChefId());
-                                        hashMap.put("DishId", chefWaitingOrders.getDishId());
-                                        hashMap.put("DishName", chefWaitingOrders.getDishName());
-                                        hashMap.put("DishPrice", chefWaitingOrders.getDishPrice());
-                                        hashMap.put("DishQuantity", chefWaitingOrders.getDishQuantity());
+                                        hashMap.put("OwnerId", chefWaitingOrders.getOwnerId());
+                                        hashMap.put("BookId", chefWaitingOrders.getBookId());
+                                        hashMap.put("BookName", chefWaitingOrders.getBookName());
+                                        hashMap.put("BookPrice", chefWaitingOrders.getBookPrice());
+                                        hashMap.put("BookQuantity", chefWaitingOrders.getBookQuantity());
                                         hashMap.put("RandomUID", RandomUID);
                                         hashMap.put("TotalPrice", chefWaitingOrders.getTotalPrice());
                                         hashMap.put("UserId", chefWaitingOrders.getUserId());

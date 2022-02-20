@@ -33,9 +33,9 @@ public class ChefPreparedOrderViewAdapter extends RecyclerView.Adapter<ChefPrepa
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final ChefFinalOrders chefFinalOrders=chefFinalOrderslist.get(position);
-        holder.dishname.setText(chefFinalOrders.getDishName());
-        holder.price.setText("Price: ₹ " + chefFinalOrders.getDishPrice());
-        holder.quantity.setText("× " + chefFinalOrders.getDishQuantity());
+        holder.dishname.setText(chefFinalOrders.getBookName());
+        holder.price.setText("Price: ₹ " + chefFinalOrders.getBookPrice());
+        holder.quantity.setText("× " + chefFinalOrders.getBookQuantity());
         holder.totalprice.setText("Total: ₹ " + chefFinalOrders.getTotalPrice());
     }
 

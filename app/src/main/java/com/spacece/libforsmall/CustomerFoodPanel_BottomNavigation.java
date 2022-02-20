@@ -77,7 +77,6 @@ public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implem
                 fragment = new CustomerHomeFragment();
                 break;
 
-
             case R.id.Cart:
                 fragment = new CustomerCartFragment();
                 break;

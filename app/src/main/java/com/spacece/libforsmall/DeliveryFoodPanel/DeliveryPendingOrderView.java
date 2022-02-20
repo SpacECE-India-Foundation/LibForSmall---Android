@@ -85,7 +85,7 @@ public class DeliveryPendingOrderView extends AppCompatActivity {
                 address.setText(deliveryShipOrders1.getAddress());
                 name.setText(deliveryShipOrders1.getName());
                 number.setText("+91" + deliveryShipOrders1.getMobileNumber());
-                ChefName.setText("Chef "+ deliveryShipOrders1.getChefName());
+                ChefName.setText("Chef "+ deliveryShipOrders1.getOwnerName());
 
             }
 

@@ -34,9 +34,9 @@ public class PendingOrdersAdapter extends RecyclerView.Adapter<PendingOrdersAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final CustomerPendingOrders customerPendingOrders = customerPendingOrderslist.get(position);
-        holder.Dishname.setText(customerPendingOrders.getDishName());
+        holder.Dishname.setText(customerPendingOrders.getBookName());
         holder.Price.setText("Price: ₹ " + customerPendingOrders.getPrice());
-        holder.Quantity.setText("× " + customerPendingOrders.getDishQuantity());
+        holder.Quantity.setText("× " + customerPendingOrders.getBookQuantity());
         holder.Totalprice.setText("Total: ₹ " + customerPendingOrders.getTotalPrice());
 
     }

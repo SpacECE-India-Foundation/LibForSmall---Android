@@ -34,9 +34,9 @@ public class ChefOrderDishesAdapter extends RecyclerView.Adapter<ChefOrderDishes
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final ChefPendingOrders chefPendingOrders = chefPendingOrderslist.get(position);
-        holder.dishname.setText(chefPendingOrders.getDishName());
+        holder.dishname.setText(chefPendingOrders.getBookName());
         holder.price.setText("Price: ₹ " + chefPendingOrders.getPrice());
-        holder.quantity.setText("× " + chefPendingOrders.getDishQuantity());
+        holder.quantity.setText("× " + chefPendingOrders.getBookQuantity());
         holder.totalprice.setText("Total: ₹ " + chefPendingOrders.getTotalPrice());
 
 

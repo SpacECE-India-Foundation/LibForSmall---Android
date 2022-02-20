@@ -33,8 +33,8 @@ public class CustomerTrackAdapter extends RecyclerView.Adapter<CustomerTrackAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final CustomerFinalOrders customerFinalOrders = customerFinalOrderslist.get(position);
-        holder.Dishname.setText(customerFinalOrders.getDishName());
-        holder.Quantity.setText(customerFinalOrders.getDishQuantity() + "× ");
+        holder.Dishname.setText(customerFinalOrders.getBookName());
+        holder.Quantity.setText(customerFinalOrders.getBookQuantity() + "× ");
         holder.Totalprice.setText("₹ " + customerFinalOrders.getTotalPrice());
 
     }

@@ -62,6 +62,7 @@ public class DeliveryPendingOrderFragmentAdapter extends RecyclerView.Adapter<De
     public void onBindViewHolder(@NonNull DeliveryPendingOrderFragmentAdapter.ViewHolder holder, int position) {
 
         final DeliveryShipOrders1 deliveryShipOrders1 = deliveryShipOrders1list.get(position);
+
         holder.Address.setText(deliveryShipOrders1.getAddress());
         holder.mobilenumber.setText("+91" + deliveryShipOrders1.getMobileNumber());
         holder.grandtotalprice.setText("Grand Total: ₹ " + deliveryShipOrders1.getGrandTotalPrice());
@@ -88,13 +89,13 @@ public class DeliveryPendingOrderFragmentAdapter extends RecyclerView.Adapter<De
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             DeliveryShipOrders deliveryShipOrderss = snapshot.getValue(DeliveryShipOrders.class);
                             HashMap<String, String> hashMap = new HashMap<>();
-                            String dishid = deliveryShipOrderss.getDishId();
-                            chefid = deliveryShipOrderss.getChefId();
-                            hashMap.put("ChefId", deliveryShipOrderss.getChefId());
-                            hashMap.put("DishId", deliveryShipOrderss.getDishId());
-                            hashMap.put("DishName", deliveryShipOrderss.getDishName());
-                            hashMap.put("DishPrice", deliveryShipOrderss.getDishPrice());
-                            hashMap.put("DishQuantity", deliveryShipOrderss.getDishQuantity());
+                            String dishid = deliveryShipOrderss.getBookId();
+                            chefid = deliveryShipOrderss.getOwnerId();
+                            hashMap.put("OwnerId", deliveryShipOrderss.getOwnerId());
+                            hashMap.put("BookId", deliveryShipOrderss.getBookId());
+                            hashMap.put("BookName", deliveryShipOrderss.getBookName());
+                            hashMap.put("BookPrice", deliveryShipOrderss.getBookPrice());
+                            hashMap.put("BookQuantity", deliveryShipOrderss.getBookQuantity());
                             hashMap.put("RandomUID", deliveryShipOrderss.getRandomUID());
                             hashMap.put("TotalPrice", deliveryShipOrderss.getTotalPrice());
                             hashMap.put("UserId", deliveryShipOrderss.getUserId());
@@ -109,8 +110,8 @@ public class DeliveryPendingOrderFragmentAdapter extends RecyclerView.Adapter<De
                                 DeliveryShipOrders1 deliveryShipOrders11 = dataSnapshot.getValue(DeliveryShipOrders1.class);
                                 HashMap<String, String> hashMap1 = new HashMap<>();
                                 hashMap1.put("Address", deliveryShipOrders11.getAddress());
-                                hashMap1.put("ChefId", deliveryShipOrders11.getChefId());
-                                hashMap1.put("ChefName", deliveryShipOrders11.getChefName());
+                                hashMap1.put("OwnerId", deliveryShipOrders11.getOwnerId());
+                                hashMap1.put("OwnerName", deliveryShipOrders11.getOwnerName());
                                 hashMap1.put("GrandTotalPrice", deliveryShipOrders11.getGrandTotalPrice());
                                 hashMap1.put("MobileNumber", deliveryShipOrders11.getMobileNumber());
                                 hashMap1.put("Name", deliveryShipOrders11.getName());
@@ -182,7 +183,7 @@ public class DeliveryPendingOrderFragmentAdapter extends RecyclerView.Adapter<De
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                             DeliveryShipOrders deliveryShipOrders = dataSnapshot1.getValue(DeliveryShipOrders.class);
-                            chefid = deliveryShipOrders.getChefId();
+                            chefid = deliveryShipOrders.getOwnerId();
                         }
 
                         FirebaseDatabase.getInstance().getReference().child("Tokens").child(chefid).child("token").addListenerForSingleValueEvent(new ValueEventListener() {

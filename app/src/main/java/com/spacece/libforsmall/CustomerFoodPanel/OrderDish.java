@@ -103,7 +103,7 @@ public class OrderDish extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         Cart cart = dataSnapshot.getValue(Cart.class);
                                         if (dataSnapshot.exists()) {
-                                            additem.setNumber(cart.getDishQuantity());
+                                            additem.setNumber(cart.getBookQuantity());
                                         }
                                     }
 
@@ -134,13 +134,18 @@ public class OrderDish extends AppCompatActivity {
                         dataref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                Cart cart1=null;
+
+                                Cart cart1 = new Cart();
+
                                 if (dataSnapshot.exists()) {
                                     int totalcount=0;
+
                                     for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                                         totalcount++;
                                     }
+
                                     int i=0;
+
                                     for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                                         i++;
                                         if(i==totalcount){
@@ -148,7 +153,9 @@ public class OrderDish extends AppCompatActivity {
                                         }
                                     }
 
-                                    if (ChefID.equals(cart1.getChefId())) {
+                                    System.out.println(cart1.toString());
+
+                                    if (ChefID.equals(cart1.getOwnerId())) {
                                         data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub).child(ChefID).child(RandomId);
                                         data.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
@@ -166,7 +173,7 @@ public class OrderDish extends AppCompatActivity {
                                                     hashMap.put("BookQuantity", String.valueOf(num));
                                                     hashMap.put("Price", String.valueOf(dishprice));
                                                     hashMap.put("Totalprice", String.valueOf(totalprice));
-                                                    hashMap.put("ChefId", ChefID);
+                                                    hashMap.put("OwnerId", ChefID);
                                                     custID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                                     reference = FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(custID).child(RandomId);
                                                     reference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -209,15 +216,18 @@ public class OrderDish extends AppCompatActivity {
                                         alert.show();
                                     }
                                 } else {
+
                                 data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub).child(ChefID).child(RandomId);
                                 data.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                                         UpdateDishModel update = dataSnapshot.getValue(UpdateDishModel.class);
                                         dishname = update.getDishes();
                                         dishprice = Integer.parseInt(update.getPrice());
                                         int num = Integer.parseInt(additem.getNumber());
                                         int totalprice = num * dishprice;
+
                                         if (num != 0) {
                                             HashMap<String, String> hashMap = new HashMap<>();
                                             hashMap.put("BookName", dishname);
@@ -225,7 +235,7 @@ public class OrderDish extends AppCompatActivity {
                                             hashMap.put("BookQuantity", String.valueOf(num));
                                             hashMap.put("Price", String.valueOf(dishprice));
                                             hashMap.put("Totalprice", String.valueOf(totalprice));
-                                            hashMap.put("OwnwerId", ChefID);
+                                            hashMap.put("OwnerId", ChefID);
                                             custID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                             reference = FirebaseDatabase.getInstance().getReference("Cart").child("CartItems").child(custID).child(RandomId);
                                             reference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {

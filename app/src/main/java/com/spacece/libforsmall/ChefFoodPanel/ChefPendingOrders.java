@@ -2,13 +2,13 @@ package com.spacece.libforsmall.ChefFoodPanel;
 
 public class ChefPendingOrders {
 
-    private String ChefId,DishId,DishName,DishQuantity,Price,RandomUID,TotalPrice,UserId;
+    private String OwnerId, BookId, BookName, BookQuantity,Price,RandomUID,TotalPrice,UserId;
 
     public ChefPendingOrders(String chefId, String dishId, String dishName, String dishQuantity, String price,String randomUID, String totalPrice, String userId) {
-        ChefId = chefId;
-        DishId = dishId;
-        DishName = dishName;
-        DishQuantity = dishQuantity;
+        OwnerId = chefId;
+        BookId = dishId;
+        BookName = dishName;
+        BookQuantity = dishQuantity;
         Price = price;
         RandomUID=randomUID;
         TotalPrice = totalPrice;
@@ -20,36 +20,36 @@ public class ChefPendingOrders {
 
     }
 
-    public String getChefId() {
-        return ChefId;
+    public String getOwnerId() {
+        return OwnerId;
     }
 
-    public void setChefId(String chefId) {
-        ChefId = chefId;
+    public void setOwnerId(String ownerId) {
+        OwnerId = ownerId;
     }
 
-    public String getDishId() {
-        return DishId;
+    public String getBookId() {
+        return BookId;
     }
 
-    public void setDishId(String dishId) {
-        DishId = dishId;
+    public void setBookId(String bookId) {
+        BookId = bookId;
     }
 
-    public String getDishName() {
-        return DishName;
+    public String getBookName() {
+        return BookName;
     }
 
-    public void setDishName(String dishName) {
-        DishName = dishName;
+    public void setBookName(String bookName) {
+        BookName = bookName;
     }
 
-    public String getDishQuantity() {
-        return DishQuantity;
+    public String getBookQuantity() {
+        return BookQuantity;
     }
 
-    public void setDishQuantity(String dishQuantity) {
-        DishQuantity = dishQuantity;
+    public void setBookQuantity(String bookQuantity) {
+        BookQuantity = bookQuantity;
     }
 
     public String getPrice() {
