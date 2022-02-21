@@ -238,7 +238,7 @@ public class Registeration extends AppCompatActivity {
                                             hashMappp.put("EmailID", email);
                                             hashMappp.put("FirstName", firstname);
                                             hashMappp.put("LastName", lastname);
-                                            hashMappp.put("Mobileno", mobileno);
+                                            hashMappp.put("Mobile", mobileno);
                                             hashMappp.put("Password", password);
                                             hashMappp.put("LocalAddress", Localaddress);
                                             hashMappp.put("State", statee);
