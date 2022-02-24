@@ -7,13 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +51,7 @@ public class CustomerProfileFragment extends Fragment {
     LinearLayout password, LogOut;
     DatabaseReference databaseReference, data;
     FirebaseDatabase firebaseDatabase;
-    String statee, cityy, suburban, email, passwordd, confirmpass;
+    String statee, cityy, mobile, suburban, email, passwordd, confirmpass;
 
 
     @Nullable
@@ -228,7 +222,8 @@ public class CustomerProfileFragment extends Fragment {
                         confirmpass = customer.getConfirmPassword();
                         email = customer.getEmailID();
                         passwordd = customer.getPassword();
-                        long mobilenoo = Long.parseLong(customer.getMobile());
+                        mobile = customer.getMobile();
+                        mobile = "9693466687";
 
                         String Fname = firstname.getText().toString().trim();
                         String Lname = lastname.getText().toString().trim();
@@ -240,7 +235,7 @@ public class CustomerProfileFragment extends Fragment {
                         hashMappp.put("EmailID", email);
                         hashMappp.put("FirstName", Fname);
                         hashMappp.put("LastName", Lname);
-                        hashMappp.put("Mobileno", String.valueOf(mobilenoo));
+                        hashMappp.put("Mobile", mobile);
                         hashMappp.put("Password", passwordd);
                         hashMappp.put("LocalAddress", Address);
                         hashMappp.put("State", statee);
@@ -271,6 +266,7 @@ public class CustomerProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(getContext(), "mobile", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(getActivity(), CustomerPhonenumber.class);
                 startActivity(i);
             }

@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.spacece.libforsmall.R;
 import com.spacece.libforsmall.ReusableCode.ReusableCodeForAll;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -48,7 +47,7 @@ public class Registeration extends AppCompatActivity {
     String[] Surat={"Agnovad","Akoti","Amroli","Athwalines"};
     String[] Rajkot={"Kalawad Road","Astron chowk","Kotecha chowk","Trikon bag"};
 
-    TextInputLayout fname, lname, localadd, emaill, pass, cmpass, Mobileno;
+    TextInputLayout fname, lname, localadd, emaill, pass, cmpass, Mobile;
     Spinner statespin, City, Suburban;
     Button Signin, Email, Phone;
     FirebaseAuth FAuth;
@@ -63,7 +62,7 @@ public class Registeration extends AppCompatActivity {
     String lastname;
     String Localaddress;
     String confirmpass;
-    String mobileno;
+    String mobile;
     String role = "Customer";
     CountryCodePicker Cpp;
     ProgressDialog mDialog;
@@ -87,7 +86,7 @@ public class Registeration extends AppCompatActivity {
             statespin = (Spinner) findViewById(R.id.Statee);
             City = (Spinner) findViewById(R.id.Citys);
             Suburban = (Spinner) findViewById(R.id.Suburban);
-            Mobileno = (TextInputLayout) findViewById(R.id.Mobilenumber);
+            Mobile = (TextInputLayout) findViewById(R.id.Mobilenumber);
             Cpp = (CountryCodePicker) findViewById(R.id.CountryCode);
             Email = (Button) findViewById(R.id.emaill);
             Phone = (Button) findViewById(R.id.phone);
@@ -215,7 +214,7 @@ public class Registeration extends AppCompatActivity {
                     lastname = lname.getEditText().getText().toString().trim();
                     Localaddress = localadd.getEditText().getText().toString().trim();
                     confirmpass = cmpass.getEditText().getText().toString().trim();
-                    mobileno = Mobileno.getEditText().getText().toString().trim();
+                    mobile = Mobile.getEditText().getText().toString().trim();
 
                     if (isValid()) {
 
@@ -238,7 +237,7 @@ public class Registeration extends AppCompatActivity {
                                             hashMappp.put("EmailID", email);
                                             hashMappp.put("FirstName", firstname);
                                             hashMappp.put("LastName", lastname);
-                                            hashMappp.put("Mobile", mobileno);
+                                            hashMappp.put("Mobile", mobile);
                                             hashMappp.put("Password", password);
                                             hashMappp.put("LocalAddress", Localaddress);
                                             hashMappp.put("State", statee);
@@ -263,7 +262,7 @@ public class Registeration extends AppCompatActivity {
                                                                     public void onClick(DialogInterface dialog, int which) {
 
                                                                         dialog.dismiss();
-                                                                        String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobileno;
+                                                                        String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
                                                                         Intent b = new Intent(Registeration.this, VerifyPhone.class);
                                                                         b.putExtra("phonenumber", phonenumber);
                                                                         startActivity(b);
@@ -338,8 +337,8 @@ public class Registeration extends AppCompatActivity {
         pass.setError("");
         cmpass.setErrorEnabled(false);
         cmpass.setError("");
-        Mobileno.setErrorEnabled(false);
-        Mobileno.setError("");
+        Mobile.setErrorEnabled(false);
+        Mobile.setError("");
 
         boolean isValidfirstname = false, isValidlastname = false, isValidaddress = false, isValidemail = false, isvalidpassword = false, isvalidconfirmpassword = false, isvalid = false, isvalidmobileno = false;
         if (TextUtils.isEmpty(firstname)) {
@@ -366,13 +365,13 @@ public class Registeration extends AppCompatActivity {
             }
 
         }
-        if (TextUtils.isEmpty(mobileno)) {
-            Mobileno.setErrorEnabled(true);
-            Mobileno.setError("Mobile number is required");
+        if (TextUtils.isEmpty(mobile)) {
+            Mobile.setErrorEnabled(true);
+            Mobile.setError("Mobile number is required");
         } else {
-            if (mobileno.length() < 10) {
-                Mobileno.setErrorEnabled(true);
-                Mobileno.setError("Invalid mobile number");
+            if (mobile.length() < 10) {
+                Mobile.setErrorEnabled(true);
+                Mobile.setError("Invalid mobile number");
             } else {
                 isvalidmobileno = true;
             }

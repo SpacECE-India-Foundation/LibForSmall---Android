@@ -1,5 +1,6 @@
 package com.spacece.libforsmall.CustomerFoodPanel;
 
+import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CustomerPassword extends AppCompatActivity {
 
 
-    TextInputLayout current, neww, confirm;
+    EditText current, neww, confirm;
     Button change_pwd;
     TextView forgot;
     String cur, ne, conf, email, password;
@@ -41,9 +42,9 @@ public class CustomerPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_password);
 
-        current = (TextInputLayout) findViewById(R.id.current_pwd);
-        neww = (TextInputLayout) findViewById(R.id.new_pwd);
-        confirm = (TextInputLayout) findViewById(R.id.confirm_pwd);
+        current = findViewById(R.id.current_pwd);
+        neww = findViewById(R.id.new_pwd);
+        confirm = findViewById(R.id.confirm_pwd);
         change_pwd = (Button) findViewById(R.id.change);
         forgot = (TextView) findViewById(R.id.forgot_pwd);
 
@@ -62,9 +63,9 @@ public class CustomerPassword extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        cur = current.getEditText().getText().toString().trim();
-                        ne = neww.getEditText().getText().toString().trim();
-                        conf = confirm.getEditText().getText().toString().trim();
+                        cur = current.getText().toString().trim();
+                        ne = neww.getText().toString().trim();
+                        conf = confirm.getText().toString().trim();
 
 
                         if (isvalid()) {
@@ -122,19 +123,15 @@ public class CustomerPassword extends AppCompatActivity {
     }
 
     public boolean isvalid() {
-        neww.setErrorEnabled(false);
         neww.setError("");
-        confirm.setErrorEnabled(false);
         confirm.setError("");
 
         boolean isValidnewpassword = false, isValidconfirmpasswoord = false, isvalid = false;
         if (TextUtils.isEmpty(ne)) {
-            neww.setErrorEnabled(true);
             neww.setError("New Password is required");
 
         } else {
             if (ne.length() < 6) {
-                neww.setErrorEnabled(true);
                 neww.setError("Password too weak");
                 confirm.setError("password too weak");
             } else {
@@ -143,13 +140,11 @@ public class CustomerPassword extends AppCompatActivity {
         }
 
         if (TextUtils.isEmpty(conf)) {
-            confirm.setErrorEnabled(true);
             confirm.setError("Confirm Password is required");
 
 
         } else {
             if (!ne.equals(conf)) {
-                neww.setErrorEnabled(true);
                 neww.setError("Password doesn't match");
                 confirm.setError("Password doesn't match");
             } else {
