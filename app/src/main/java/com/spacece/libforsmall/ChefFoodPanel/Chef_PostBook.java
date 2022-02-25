@@ -76,6 +76,8 @@ public class Chef_PostBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef__post_book);
 
+        setTitle("Post Book");
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         Dishes = (Spinner) findViewById(R.id.dishes);

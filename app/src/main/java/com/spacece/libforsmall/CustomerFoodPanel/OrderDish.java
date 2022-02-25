@@ -92,7 +92,7 @@ public class OrderDish extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Chef chef = dataSnapshot.getValue(Chef.class);
 
-                                String name = "<b>" + "Chef Name: " + "</b>" + chef.getFname() + " " + chef.getLname();
+                                String name = "<b>" + "Owner Name: " + "</b>" + chef.getFname() + " " + chef.getLname();
                                 ChefName.setText(Html.fromHtml(name));
                                 String loc = "<b>" + "Location: " + "</b>" + chef.getSuburban();
                                 ChefLoaction.setText(Html.fromHtml(loc));

@@ -36,7 +36,6 @@ public class CustomerPassword extends AppCompatActivity {
     String cur, ne, conf, email, password;
     DatabaseReference databaseReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +87,7 @@ public class CustomerPassword extends AppCompatActivity {
                                                     FirebaseDatabase.getInstance().getReference("Customer").child(userid).child("ConfirmPassword").setValue(conf);
 
                                                     Toast.makeText(CustomerPassword.this, "password updated", Toast.LENGTH_SHORT).show();
+                                                    finish();
                                                 } else {
                                                     Toast.makeText(CustomerPassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
@@ -123,8 +123,6 @@ public class CustomerPassword extends AppCompatActivity {
     }
 
     public boolean isvalid() {
-        neww.setError("");
-        confirm.setError("");
 
         boolean isValidnewpassword = false, isValidconfirmpasswoord = false, isvalid = false;
         if (TextUtils.isEmpty(ne)) {

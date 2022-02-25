@@ -158,7 +158,7 @@
         <entry key="app/src/main/res/layout/customer_menudish.xml" value="0.1" />
         <entry key="app/src/main/res/layout/customer_payableorder.xml" value="0.1" />
         <entry key="app/src/main/res/layout/customer_pendingorders.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/customer_trackorder.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/customer_trackorder.xml" value="0.25" />
         <entry key="app/src/main/res/layout/delivery_pendingorder.xml" value="0.1" />
         <entry key="app/src/main/res/layout/delivery_pendingorders.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/delivery_shiporders.xml" value="0.35625" />
