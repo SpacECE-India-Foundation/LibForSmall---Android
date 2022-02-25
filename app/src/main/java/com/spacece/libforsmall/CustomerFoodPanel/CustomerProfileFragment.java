@@ -84,10 +84,6 @@ public class CustomerProfileFragment extends Fragment {
                 address.setText(customer.getLocalAddress());
                 mobileno.setText(customer.getMobile());
                 Email.setText(customer.getEmailID());
-//                TODO initialization error
-//                State.setSelection(getIndexByString(State, customer.getState()));
-//                City.setSelection(getIndexByString(City, customer.getCity()));
-//                Suburban.setSelection(getIndexByString(Suburban, customer.getSuburban()));
                 State.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -107,7 +103,6 @@ public class CustomerProfileFragment extends Fragment {
                                 list.add(text);
                             }
                             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, list);
-
                             City.setAdapter(arrayAdapter);
                         }
                         City.setSelection(getIndexByString(City, customer.getCity()));
